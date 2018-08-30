@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="fragments/head"></th:block>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <th:block th:replace="fragments/navbar"></th:block>
+    </header>
+    <main class="mt-3">
+        <h1 class="text-center">All Users</h1>
+        <hr class="hr-2">
+        <table class="table">
+            <thead>
+            <tr class="font-weight-bold">
+                <th class="w-5">#</th>
+                <th class="w-35">User</th>
+                <th class="w-20">Role</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user, iter : ${allUsers}" th:object="${user}">
+                <td class="w-5" th:text="${iter.index + 1}"></td>
+                <td class="w-35" th:text="*{username}"></td>
+                <td class="w-35" th:text="*{extractAuthority()}"></td>
+                <td>
+                    <form th:action="@{users/promote}" th:method="POST">
+                        <input type="hidden" name="userId" th:value="*{id}">
+                        <button type="submit" class="btn btn-success">Promote User</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{users/demote}" th:method="POST">
+                        <input type="hidden" name="userId" th:value="*{id}">
+                        <button type="submit" class="btn btn-danger">Demote User</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+    <footer class="footer mt-5 p-3">
+        <th:block th:replace="fragments/footer"></th:block>
+    </footer>
+</div>
+</body>
+</html>

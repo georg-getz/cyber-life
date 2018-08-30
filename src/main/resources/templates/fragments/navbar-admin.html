@@ -1,0 +1,48 @@
+<th:block th:fragment="navbar-admin" xmlns:th="http://www.w3.org/1999/xhtml">
+    <nav class="navbar navbar-expand-lg">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand font-weight-bold">Cyber Life</a>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav font-weight-bold">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tournaments
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" th:href="@{/tournaments/all}">All Tournaments</a>
+                        <a class="dropdown-item" th:href="@{/tournaments/my}">My Tournaments</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" th:href="@{/tournaments/create}">Create Tournament</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOrders" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Joinings
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownOrders">
+                        <a class="dropdown-item" th:href="@{/joinings/all}">All Joinings</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/users">Users</a>
+                </li>
+                <li class="nav-item">
+                    <form th:action="@{/logout}" th:method="POST">
+                        <button type="submit" class="btn btn-link nav-link font-weight-bold">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</th:block>
