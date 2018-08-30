@@ -12,7 +12,7 @@ public class JoinTournament extends BaseEntity {
     public JoinTournament() {
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "tournament_id", nullable = false)
     public Tournament getTournament() {
         return tournament;
